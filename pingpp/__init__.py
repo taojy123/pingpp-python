@@ -8,6 +8,7 @@ verify_ssl_certs = True
 accept_language = None
 private_key_path = None
 private_key = None
+app_id = None
 
 from pingpp.error import (  # noqa
     PingppError,
@@ -19,12 +20,31 @@ from pingpp.error import (  # noqa
 
 from pingpp.resource import (  # noqa
     Charge,
-    PartnerCharge,
-    PartnerChargeRefund,
     RedEnvelope,
     Event,
     Transfer,
-    Customs)
+    Customs,
+    BatchRefund,
+    Order,
+    OrderRefunds,
+    AssetTransaction,
+    User,
+    CouponTemplate,
+    BalanceTransaction,
+    Withdrawal,
+    Coupon,
+    BatchTransfer,
+    Identification,
+    Statistics,
+    Recharge,
+    BatchWithdrawal,
+    SubApp,
+    Channel,
+    SettleAccount,
+    Royaltie,
+    RoyaltySettlement,
+    RoyaltyTransaction
+)
 
 from pingpp.version import VERSION  # noqa
 from pingpp.api_requestor import APIRequestor  # noqa

@@ -12,9 +12,9 @@ import string
 import os
 
 # api_key 获取方式：登录 [Dashboard](https://dashboard.pingxx.com)->点击管理平台右上角公司名称->开发信息-> Secret Key
-api_key = 'sk_test_ibbTe5jLGCi5rzfH4OqPW9KC'
+api_key = 'sk_live_vjfr90jj1q985KuPO84iP8KO'
 # app_id 获取方式：登录 [Dashboard](https://dashboard.pingxx.com)->点击你创建的应用->应用首页->应用 ID(App ID)
-app_id = 'app_1Gqj58ynP0mHeX1q'
+app_id = 'app_LibTW1n1SOq9Pin1'
 # 设置 API Key
 pingpp.api_key = api_key
 
@@ -46,6 +46,7 @@ try:
         client_ip='192.168.0.9',  # 发起支付请求客户端的 IP 地址，格式为 IPV4，如: 127.0.0.1
         app=dict(id=app_id)
     )
+
     print(ch.to_str())  # 输出 Ping++ 返回的支付凭据 Charge
 except Exception as e:
     print(e.message)

@@ -9,7 +9,17 @@
 import pingpp
 
 # api_key 获取方式：登录 [Dashboard](https://dashboard.pingxx.com)->点击管理平台右上角公司名称->开发信息-> Secret Key
-pingpp.api_key = 'sk_test_ibbTe5jLGCi5rzfH4OqPW9KC'
+# pingpp.api_key = 'sk_test_ibbTe5jLGCi5rzfH4OqPW9KC'
 # 通过 Charge 对象的 id 查询一个已创建的 Charge 对象
-ch = pingpp.Charge.retrieve('ch_a9CmfHTGGaz1urHiL8m5OiX1')
-print(ch)  # 输出 Ping++ 返回 Charge 对象
+try:
+    ch = pingpp.Charge.retrieve('ch_Hm5uTSifDOuTy9iLeLPSurrD')
+    print(ch)  # 输出 Ping++ 返回 Charge 对象
+except Exception as e:
+    print e.http_body
+
+# 获取charge列表
+try:
+    ch_list = pingpp.Charge.all(app_id='app_LibTW1n1SOq9Pin1')
+    print ch_list  # 输出返回Charge 列表对象
+except Exception as e:
+    print e

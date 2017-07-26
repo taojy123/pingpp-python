@@ -329,7 +329,8 @@ class APIRequestor(object):
         from Crypto.Signature import PKCS1_v1_5
         from Crypto.Hash import SHA256
         from base64 import b64encode
-
+        import time
+        # rsa_data = data + self.api_url()
         rsa_key = RSA.importKey(private_key)
         signer = PKCS1_v1_5.new(rsa_key)
         digest = SHA256.new(data.encode())
@@ -339,5 +340,6 @@ class APIRequestor(object):
 
     def get_rsa_verify_data(self, body, uri, timestamp):
         verify_data = [body.decode()] if body else []
+        # if not body:
         verify_data.extend([uri, repr(timestamp)])
         return "".join(verify_data)
