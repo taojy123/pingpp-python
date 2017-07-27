@@ -20,6 +20,8 @@ from pingpp.error import (  # noqa
 
 from pingpp.resource import (  # noqa
     Charge,
+    PartnerCharge,
+    PartnerChargeRefund,
     RedEnvelope,
     Event,
     Transfer,

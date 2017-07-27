@@ -953,3 +953,43 @@ class RoyaltyTransaction(ListableAPIResource):
     @classmethod
     def class_name(cls):
         return 'royalty_transaction'
+
+
+
+class PartnerCharge(CreateableAPIResource, ListableAPIResource):
+    @classmethod
+    def class_url(cls):
+        return "/partners/charges"
+
+    def instance_url(self):
+        return self.class_url()
+
+    @classmethod
+    def retrieve(cls, id, api_key=None, **params):
+        url = "%s/%s" % (cls.class_url(), id)
+        requestor = api_requestor.APIRequestor(api_key)
+        response, api_key = requestor.request('get', url, params)
+        return convert_to_pingpp_object(response, api_key)
+
+
+class PartnerChargeRefund(CreateableAPIResource, ListableAPIResource):
+    @classmethod
+    def class_url(cls):
+        return "/partners/charges/%s/refunds"
+
+    @classmethod
+    def create(cls, ch_id=None, api_key=None, **params):
+        url = cls.class_url() % ch_id
+        requester = api_requestor.APIRequestor(api_key)
+        response, api_key = requester.request('post', url, params)
+        return convert_to_pingpp_object(response, api_key)
+
+    @classmethod
+    def retrieve(cls, ch_id=None, re_id=None, api_key=None, **params):
+        url = cls.class_url() % ch_id
+        refund_url = "%s/%s" % (url, re_id)
+        requester = api_requestor.APIRequestor(api_key)
+        response, api_key = requester.request('get', refund_url, params)
+        return convert_to_pingpp_object(response, api_key)
+
+
